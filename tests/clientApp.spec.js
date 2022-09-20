@@ -11,9 +11,12 @@ test('clientApp login', async ({page})=>{
 
     await id.type('anshika@gmail.com')
     await pwd.fill('Iamking@000')
-    await loginBtn.click()
+
+    await Promise.all([
+        page.waitForNavigation(),
+        loginBtn.click()
+    ])
      //await page.waitForLoadState('networkidle') // Not Working
-    await page.waitForNavigation()
     const titles = await cardTitle.allTextContents()
     console.log(titles)
 })
