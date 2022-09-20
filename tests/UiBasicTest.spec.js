@@ -38,3 +38,17 @@ test.only('Login and validation',async({page})=>{
 
 })
 
+test('Polling on playwright', async ({page})=>{
+    await expect.poll(async () => {
+        const response = await page.request.get('https://dummyjson.com/products/1');
+        const jsonBody = await response.json()
+        console.log("Response",jsonBody);
+        //return jsonBody.id;
+        return response.status();
+      }, {
+        intervals: [1000, 2000, 10000],
+        message: 'Try Again',
+        timeout: 10000,
+      }).toBe(200);
+})
+
