@@ -52,3 +52,14 @@ test('Polling on playwright', async ({page})=>{
       }).toBe(200);
 })
 
+//page --> used when the browser context is empty
+test.describe('local block', () => {
+
+    test.use({ viewport: { width: 600, height: 900 } }); //Override config in test file
+
+    test('Page fixture Playwright test',async ({page})=>{
+    await page.goto('https://google.com')
+    console.log(await page.title())
+    await expect(page).toHaveTitle('Google')
+    })
+});
