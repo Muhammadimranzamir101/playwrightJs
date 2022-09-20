@@ -20,3 +20,21 @@ test('Browser fixture Playwright test',async ({browser})=>{
     await expect(page.locator("[style*='block']")).not.toContainText("Correct"); //Negating Matchers
     
 })
+
+test.only('Login and validation',async({page})=>{
+
+    const userName = page.locator('#username');
+    const password = page.locator('#password');
+    const signInBtn = page.locator('//input[@id="signInBtn"]')
+
+    await page.goto('https://rahulshettyacademy.com/loginpagePractise/')
+
+    await userName.type('rahulshettyacademy')
+    await userName.fill('')
+    await userName.type('rahulshettyacademy')
+    await password.fill('learning')
+    await signInBtn.click()
+    console.log(await page.locator('app-card-list[class="row"]>app-card:nth-child(1) h4').textContent())
+
+})
+
