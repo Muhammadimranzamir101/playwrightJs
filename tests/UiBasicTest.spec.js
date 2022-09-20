@@ -35,10 +35,11 @@ test.only('Login and validation',async({page})=>{
     await userName.type('rahulshettyacademy')
     await password.fill('learning')
     await signInBtn.click()
+    await page.waitForNavigation()
     // console.log(await page.locator('app-card-list[class="row"]>app-card:nth-child(1) h4').textContent())
-    console.log(await cardTitle.first().textContent())
-    console.log(await cardTitle.nth(1).textContent())
-    console.log(await cardTitle.last().textContent()) // returns single element.
+    // console.log(await cardTitle.first().textContent())
+    // console.log(await cardTitle.nth(1).textContent())
+    // console.log(await cardTitle.last().textContent()) // returns single element.
     const allTitles = await cardTitle.allTextContents(); // could not get total elements because list (array) can return zero elements.
     console.log(allTitles);
 
