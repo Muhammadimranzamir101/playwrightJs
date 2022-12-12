@@ -21,6 +21,23 @@ const config = {
     },
   },
 
+  projects: [
+    {
+      name: 'Directory_Chromium',
+      testDir: 'configExample',
+      use: {
+        browserName: 'chromium',
+      }
+    },
+    {
+      name: 'chromium',
+      testDir: 'tests',
+      use: {
+        browserName: 'webkit',
+      }
+    },
+  ],
+
 };
 
 module.exports = config;
