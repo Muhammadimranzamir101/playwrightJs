@@ -2,14 +2,19 @@
 const { devices } = require('@playwright/test');
 
 const config = {
-  testDir: './tests',
   /* Maximum time one test can run for. */
   timeout: 90 * 1000,
+
+  //testIgnore: '**/testDir/**',
+  //testMatch: /.*\.specs\.js/,
+
   expect: {
     timeout: 5000 //timeout for assertion
   },
 
   reporter: 'html',
+
+  workers: 20,
 
   use: {
     browserName : 'chromium',
@@ -24,7 +29,7 @@ const config = {
   projects: [
     {
       name: 'Directory_Chromium',
-      testDir: 'configExample',
+      testDir: 'testDir',
       use: {
         browserName: 'chromium',
       }
@@ -33,7 +38,7 @@ const config = {
       name: 'chromium',
       testDir: 'tests',
       use: {
-        browserName: 'webkit',
+        browserName: 'chromium',
       }
     },
   ],
