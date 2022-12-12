@@ -6,7 +6,7 @@ const { use } = require('../playwright.config');
 test('Page fixture Playwright test',async ({page})=>{
 
     await page.goto('https://www.daraz.pk/')
-    await this.page.waitForLoadState('load');
-    await this.page.locator('button[class="airship-btn airship-btn-deny"]').click();
+    await page.waitForLoadState('load');
+    await page.locator('button[class="airship-btn airship-btn-deny"]').click();
     
 })

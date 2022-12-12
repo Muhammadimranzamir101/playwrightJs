@@ -8,7 +8,7 @@ test('Browser fixture Playwright test',async ({browser})=>{
     const page = await context.newPage(); // add a tab to opened browser
 
     await page.goto('https://www.daraz.pk/')
-    await this.page.waitForLoadState('load');
-    await this.page.locator('button[class="airship-btn airship-btn-deny"]').click();
+    await page.waitForLoadState('load');
+    await page.locator('button[class="airship-btn airship-btn-deny"]').click();
     
 })
