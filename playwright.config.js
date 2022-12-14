@@ -19,10 +19,16 @@ const config = {
   use: {
     browserName : 'chromium',
     headless : false,
-    viewport: { width: 1280, height: 720 },
+    viewport : null,
+    //viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,
     launchOptions: {
       slowMo: 20,
+      args: ["--start-maximized"],
+      logger:{
+      isEnabled: (name) => name === 'api',
+      log: (name, severity, message) => console.log(`${name} ${message}`)
+      }
     },
   },
 
