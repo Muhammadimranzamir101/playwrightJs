@@ -20,6 +20,9 @@ const config = {
     browserName : 'chromium',
     headless : false,
     viewport : null,
+    trace: 'on',
+    //trace: 'on-first-retry',
+    retries: 1,
     //viewport: { width: 1280, height: 720 },
     ignoreHTTPSErrors: true,
     launchOptions: {
