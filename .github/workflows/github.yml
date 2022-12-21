@@ -25,5 +25,5 @@ jobs:
       if: success() || failure() 
       with:
         name: JEST Tests
-        path: playwright-report/
+        path: reports/jest-*.xml
         reporter: jest-junit
