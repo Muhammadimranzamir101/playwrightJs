@@ -25,3 +25,14 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+        
+  notify:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: dorny/test-reporter@v1
+      with:
+        artifact: test-results            # artifact name
+        name: JEST Tests                  # Name of the check run which will be created
+        path: '*.xml'                     # Path to test results (inside artifact .zip)
+        reporter: jest-junit              # Format of test results    
