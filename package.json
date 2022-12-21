@@ -4,13 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test --headed"
+    "test": "jest --ci --reporters=default --reporters=jest-Junit"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.28.1",
-    "allure-playwright": "^2.0.0-beta.20"
+    "allure-playwright": "^2.0.0-beta.20",
+    "jest": "^26.5.3",
+    "jest-junit": "^12.0.0"
+  },
+  "jest-junit": {
+    "outputDirectory": "reports",
+    "outputName": "jest-junit.xml",
+    "ancestorSeparator": " › ",
+    "uniqueOutputName": "false",
+    "suiteNameTemplate": "{filepath}",
+    "classNameTemplate": "{classname}",
+    "titleTemplate": "{title}"
   }
 }
