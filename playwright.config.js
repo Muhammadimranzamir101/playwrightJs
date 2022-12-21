@@ -55,7 +55,7 @@ const config = {
       testDir: 'tests',
       use: {
         browserName: 'chromium',
-        headless: false,
+        headless: true,
       }
     },
   ],
