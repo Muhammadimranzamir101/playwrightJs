@@ -1,6 +1,6 @@
 const {test} = require('@playwright/test');
 
-test.only('textContent vs allTextContents',async({page})=>{
+test('textContent vs allTextContents',async({page})=>{
 
     const userName = page.locator('#username');
     const password = page.locator('#password');

@@ -31,7 +31,7 @@ test('Handling tabs in playwright',async({browser})=>{
 
 })
 
-test.only('Handling child windows in playwright', async({browser})=>{
+test('Handling child windows in playwright', async({browser})=>{
     const context = await browser.newContext();
     const page = await context.newPage();
     await page.goto('https://rahulshettyacademy.com/AutomationPractice/')

@@ -53,6 +53,7 @@ const config = {
     {
       name: 'headless',
       testDir: 'tests',
+      reporter: [['line'], ['allure-playwright']],
       use: {
         browserName: 'chromium',
         headless: true,

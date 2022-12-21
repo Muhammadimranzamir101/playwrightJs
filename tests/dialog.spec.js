@@ -14,7 +14,7 @@ test('Verify Alert', async ({ page }) => {
     await expect(page.locator('#msg')).toHaveText('You clicked on Ok button.')
 });
 
-test.only('Verify Confirm Dialog OK', async ({ page }) => {
+test('Verify Confirm Dialog OK', async ({ page }) => {
     await page.goto('http://autopract.com/selenium/alert5/');
   
     page.on('dialog', async dialog => {

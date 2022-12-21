@@ -44,7 +44,7 @@ test('Soft assertion in playwright', async ({ page }) => {
     await page.waitForNavigation()
 })
 
-test.only('Polling in playwright', async ({page})=>{
+test('Polling in playwright', async ({page})=>{
     await expect.poll(async () => {
         const response = await page.request.get('https://dummyjson.com/products/1');
         const jsonBody = await response.json()

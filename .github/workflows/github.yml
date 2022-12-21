@@ -18,21 +18,14 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
-      run: npx playwright test --project=headless
+      run: npx playwright test –project=headless --reporter=line,allure-playwright
+    - name: Generate Allure reporting
+      run: allure generate allure-results -o allure-report --clean
+    - name: open allure report
+      run: allure open allure-report
     - uses: actions/upload-artifact@v3
       if: always()
       with:
         name: playwright-report
         path: playwright-report/
-        retention-days: 30
-
-  notify:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-    - uses: dorny/test-reporter@v1
-      with:
-        artifact: test-result             # artifact name
-        name: JEST Tests                  # Name of the check run which will be created
-        path: 'test-result/*.xml'         # Path to test results (inside artifact .zip)
-        reporter: jest-junit              # Format of test results    
+        retention-days: 30 
