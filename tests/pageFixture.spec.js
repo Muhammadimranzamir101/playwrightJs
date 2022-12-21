@@ -3,7 +3,7 @@ const { use } = require('../playwright.config');
 
 //page --> used when the browser context is empty
 
-test('Page fixture Playwright test',async ({page})=>{
+test.skip('Page fixture Playwright test',async ({page})=>{
 
     await page.goto('https://www.daraz.pk/')
     await page.waitForLoadState('load');
