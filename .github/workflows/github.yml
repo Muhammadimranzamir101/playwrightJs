@@ -20,8 +20,10 @@ jobs:
     - name: Run Playwright tests
       run: npx playwright test --project=headless
     - uses: actions/upload-artifact@v3
-      if: always()
+    - name: Test Report
+      uses: dorny/test-reporter@v1
+      if: success() || failure() 
       with:
-        name: playwright-report
+        name: JEST Tests
         path: playwright-report/
-        retention-days: 30
+        reporter: jest-junit
