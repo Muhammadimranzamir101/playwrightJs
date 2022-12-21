@@ -50,6 +50,14 @@ const config = {
         browserName: 'chromium',
       }
     },
+    {
+      name: 'headless',
+      testDir: 'tests',
+      use: {
+        browserName: 'chromium',
+        headless: false,
+      }
+    },
   ],
 
 };
