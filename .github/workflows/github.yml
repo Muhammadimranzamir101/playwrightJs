@@ -34,5 +34,5 @@ jobs:
       with:
         artifact: test-result             # artifact name
         name: JEST Tests                  # Name of the check run which will be created
-        path: '**/test-results/*.xml'     # Path to test results (inside artifact .zip)
+        path: 'test-result/*.xml'         # Path to test results (inside artifact .zip)
         reporter: jest-junit              # Format of test results    
