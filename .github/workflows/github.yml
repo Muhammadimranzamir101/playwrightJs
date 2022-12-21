@@ -20,7 +20,7 @@ jobs:
     - name: Run Playwright tests
       run: npx playwright test --project=headless --reporter=line,allure-playwright
     - name: Generate Allure reporting
-      run: allure generate allure-results -o allure-report --clean
+      run: node_modules/allure-commandline/dist/bin/allure generate allure-results -o allure-report --clean
     - name: open allure report
       run: allure open allure-report
     - uses: actions/upload-artifact@v3
