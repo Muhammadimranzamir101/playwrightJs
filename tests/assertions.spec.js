@@ -30,7 +30,7 @@ test('Negating matchers assertion', async ({ page }) => {
 })
 
 
-test('Soft assertion in playwright', async ({ page }) => {
+test.skip('Soft assertion in playwright', async ({ page }) => {
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/')
     await page.locator('#username').type('rahulshettyacademy')
     await page.locator('#password').type('Mobile@2')
