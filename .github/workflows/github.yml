@@ -59,6 +59,3 @@ jobs:
         to: mimran@nisum.com
         from: Muhammad Imran
         body: https://muhammadimranzamir101.github.io/playwrightJs/${{ github.run_number }}
-  
-
-
