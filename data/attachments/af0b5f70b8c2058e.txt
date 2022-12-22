@@ -1,0 +1,1 @@
+api <= locator.allTextContents succeeded
