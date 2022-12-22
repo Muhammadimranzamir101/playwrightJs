@@ -1,2 +1,2 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Thu Dec 22 13:04:47 UTC 2022","Thu Dec 22 13:04:54 UTC 2022","6566","headless","tests/elements.spec.js","","","","Login and validation",""
+"passed","Thu Dec 22 13:12:30 UTC 2022","Thu Dec 22 13:12:36 UTC 2022","6440","headless","tests/elements.spec.js","","","","Login and validation",""
