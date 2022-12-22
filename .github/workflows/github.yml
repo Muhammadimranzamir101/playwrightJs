@@ -35,7 +35,7 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@4.1.5 
       with:
         branch: gh-pages
-        folder: playwright-report/allure-results
+        folder: allure-report
     
     - name: Post the link to the report
       if: always()
