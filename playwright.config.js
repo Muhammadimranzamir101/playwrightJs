@@ -59,6 +59,24 @@ const config = {
         headless: true,
       }
     },
+    {
+      name: 'headless_firefox',
+      testDir: 'tests',
+      reporter: [['line'], ['allure-playwright']],
+      use: {
+        browserName: 'firefox',
+        headless: true,
+      }
+    },
+    {
+      name: 'headless_webkit',
+      testDir: 'tests',
+      reporter: [['line'], ['allure-playwright']],
+      use: {
+        browserName: 'webkit',
+        headless: true,
+      }
+    },
   ],
 
 };
