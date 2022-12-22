@@ -1,2 +1,3 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Thu Dec 22 11:56:10 UTC 2022","Thu Dec 22 11:56:16 UTC 2022","6671","headless","tests/elements.spec.js","","","","Login and validation",""
+"passed","Thu Dec 22 12:02:26 UTC 2022","Thu Dec 22 12:02:26 UTC 2022","526","headless","tests/assertions.spec.js","","","","Polling in playwright",""
+"passed","Thu Dec 22 12:02:26 UTC 2022","Thu Dec 22 12:02:32 UTC 2022","6174","headless","tests/elements.spec.js","","","","Login and validation",""
