@@ -46,6 +46,6 @@ jobs:
         username: ${{secrets.MAIL_USERNAME}}
         password: ${{secrets.MAIL_PASSWORD}}
         subject: Github Actions job result
-        to: mimran@nisum.com,snaeem@nisum.com
+        to: mimran@nisum.com
         from: Muhammad Imran
         body: https://muhammadimranzamir101.github.io/playwrightJs/
