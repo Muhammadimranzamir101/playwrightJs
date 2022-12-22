@@ -36,16 +36,6 @@ jobs:
       with:
         branch: gh-pages
         folder: allure-report
-    
-    - name: Post the link to the report
-      if: always()
-      uses: Sibz/github-status-action@v1
-      with: 
-        authToken: ${{secrets.GITHUB_TOKEN}}
-        context: 'Test report'
-        state: 'success'
-        sha: ${{ github.event.pull_request.head.sha || github.sha }}
-        target_url: https://muhammadimranzamir101.github.io/playwrightJs/${{ github.run_number }}
 
     - name: Send mail
       uses: dawidd6/action-send-mail@v3
@@ -56,6 +46,6 @@ jobs:
         username: ${{secrets.MAIL_USERNAME}}
         password: ${{secrets.MAIL_PASSWORD}}
         subject: Github Actions job result
-        to: mimran@nisum.com
+        to: mimran@nisum.com,snaeem@nisum.com
         from: Muhammad Imran
-        body: https://muhammadimranzamir101.github.io/playwrightJs/${{ github.run_number }}
+        body: https://muhammadimranzamir101.github.io/playwrightJs/
