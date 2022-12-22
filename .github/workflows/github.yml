@@ -53,7 +53,6 @@ jobs:
         connection_url: ${{secrets.MAIL_CONNECTION}}
         server_address: smtp.gmail.com
         server_port: 465
-        domain: 'gmail.com'
         username: ${{secrets.MAIL_USERNAME}}
         password: ${{secrets.MAIL_PASSWORD}}
         subject: Github Actions job result
