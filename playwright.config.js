@@ -51,6 +51,20 @@ const config = {
       }
     },
     {
+      name: 'firefox',
+      testDir: 'tests',
+      use: {
+        browserName: 'firefox',
+      }
+    },
+    {
+      name: 'webkit',
+      testDir: 'tests',
+      use: {
+        browserName: 'webkit',
+      }
+    },
+    {
       name: 'headless',
       testDir: 'tests',
       reporter: [['line'], ['allure-playwright']],
