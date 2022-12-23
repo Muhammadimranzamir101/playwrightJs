@@ -21,10 +21,10 @@ pipeline {
                         sh '''
                             sh 'npx playwright test --project=chromium --retries=1
                         '''
-                    }
                 }
             }
         }
+
         stage('firefox') {
                 steps {
                     sh 'npx playwright test --project=headless_firefox'
