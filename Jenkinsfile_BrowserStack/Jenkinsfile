@@ -4,40 +4,39 @@ pipeline {
         nodejs = tool name: 'nodejs-14.17.6'
         env.NODEJS_HOME = "${nodejs}"
         env.PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"
-        stages {
-            stage('build') {
+
+        stage('build') {
                 steps {
                     checkout scm
                     sh 'npm install' // <1>
                 }
-            }
-            stage('chrome') {
+        }
+        stage('chrome') {
                 browserstack(credentialsId: 'Browserstack_credentials', localConfig: [localOptions: '--include-hosts *.*.com, *.*.com*, *.com, *.com* --force-local', localPath: '']) {
                     try {
-                        env.BROWSERSTACK_USERNAME = "${BROWSERSTACK_USERNAME}"
-                        env.BROWSERSTACK_ACCESS_KEY = "${BROWSERSTACK_ACCESS_KEY}"
-                        env.BROWSERSTACK_LOCAL_IDENTIFIER = "${BROWSERSTACK_LOCAL_IDENTIFIER}"
-                        env.BUILD_NUMBER = "${BUILD_NUMBER}"
+                    env.BROWSERSTACK_USERNAME = "${BROWSERSTACK_USERNAME}"
+                    env.BROWSERSTACK_ACCESS_KEY = "${BROWSERSTACK_ACCESS_KEY}"
+                    env.BROWSERSTACK_LOCAL_IDENTIFIER = "${BROWSERSTACK_LOCAL_IDENTIFIER}"
+                    env.BUILD_NUMBER = "${BUILD_NUMBER}"
 
-                        sh '''
+                    sh '''
                                         sh 'npx playwright test --project=chromium --retries=1
                                     '''
                                     } catch (error) {
-                        error.printStackTrace()
-                        println('Got an error')
+                    error.printStackTrace()
+                    println('Got an error')
                     }
                 }
-            }
-            stage('firefox') {
+        }
+        stage('firefox') {
                 steps {
                     sh 'npx playwright test --project=headless_firefox'
                 }
-            }
-            stage('webkit') {
+        }
+        stage('webkit') {
                 steps {
                     sh 'npx playwright test --project=headless_webkit'
                 }
-            }
         }
     }
     catch (error) {
