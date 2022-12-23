@@ -13,7 +13,6 @@ pipeline {
         stage('chrome') {
             steps {
                 browserstack(credentialsId: 'Browserstack_credentials', localConfig: [localOptions: '--include-hosts *.*.com, *.*.com*, *.com, *.com* --force-local', localPath: '']) {
-                    try {
                         env.BROWSERSTACK_USERNAME = "${BROWSERSTACK_USERNAME}"
                         env.BROWSERSTACK_ACCESS_KEY = "${BROWSERSTACK_ACCESS_KEY}"
                         env.BROWSERSTACK_LOCAL_IDENTIFIER = "${BROWSERSTACK_LOCAL_IDENTIFIER}"
@@ -22,10 +21,6 @@ pipeline {
                         sh '''
                             sh 'npx playwright test --project=chromium --retries=1
                         '''
-                    }
-                    catch (error) {
-                        error.printStackTrace()
-                        println('Got an error')
                     }
                 }
             }
