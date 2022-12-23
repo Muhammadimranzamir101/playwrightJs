@@ -46,4 +46,13 @@ pipeline {
         emailext body: '${JELLY_SCRIPT,template="selenium-results"}', mimeType: 'text/html', recipientProviders: [[$class: 'CulpritsRecipientProvider'], [$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: '[JENKINS] ${JOB_BASE_NAME} failed', to: 'mimran@nisum.com'
         throw error
     }
+    finally {
+        if (currentBuild.result == 'FAILURE' || currentBuild.result == 'UNSTABLE') {
+            emailext attachLog: true, body: 'Failure in ${JOB_BASE_NAME} build number ${BUILD_URL}', compressLog: true, recipientProviders: [[$class: 'CulpritsRecipientProvider'], [$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: '[JENKINS] ${JOB_BASE_NAME} failed', to: 'mimran@nisum.com'
+        }
+
+        if (SEND_TO_INFLUX.toBoolean()) {
+            step([$class: 'InfluxDbPublisher', customData: null, customDataMap: null, customPrefix: null, target: 'InfluxDB'])
+        }
+    }
 }
