@@ -1,39 +1,62 @@
 pipeline {
     agent any
 
-    tools { nodejs 'nodejs' }
+    timestamps {
+        ansiColor('xterm') {
+            node("dev-${JOB_BASE_NAME}-${BUILD_NUMBER}") {
+                try {
+                    nodejs = tool name: 'nodejs-12.16.3'
+                    env.NODEJS_HOME = "${nodejs}"
+                    env.PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"
 
-    stages {
-        stage('build') {
-                steps {
-                    checkout scm
-                    sh 'npm install' // <1>
-                }
-        }
-        stage('chrome') {
-            steps {
-                browserstack(credentialsId: 'Browserstack_credentials', localConfig: [localOptions: '--include-hosts *.*.com, *.*.com*, *.com, *.com* --force-local', localPath: '']) {
-                        env.BROWSERSTACK_USERNAME = "${BROWSERSTACK_USERNAME}"
-                        env.BROWSERSTACK_ACCESS_KEY = "${BROWSERSTACK_ACCESS_KEY}"
-                        env.BROWSERSTACK_LOCAL_IDENTIFIER = "${BROWSERSTACK_LOCAL_IDENTIFIER}"
-                        env.BUILD_NUMBER = "${BUILD_NUMBER}"
+                    stage('Clone Repository') {
+                        git branch: '${BRANCH}', credentialsId: 'Repository_SCM_Credential', url: 'git@github.com:Muhammadimranzamir101/playwrightJs.git'
+                    }
 
+                    stage('NPM install') {
                         sh '''
-                            sh 'npx playwright test --project=chromium --retries=1
+                            npm install
                         '''
+                    }
+
+                    timeout(time: 30, unit: 'MINUTES') {
+                        stage('Run Chrome tests') {
+                                browserstack(credentialsId: 'Browserstack_credentials', localConfig: [localOptions: '--include-hosts *.*.com, *.*.com*, *.com, *.com* --force-local', localPath: '']) {
+                                    try {
+                                    env.BROWSERSTACK_USERNAME = "${BROWSERSTACK_USERNAME}"
+                                    env.BROWSERSTACK_ACCESS_KEY = "${BROWSERSTACK_ACCESS_KEY}"
+                                    env.BROWSERSTACK_LOCAL_IDENTIFIER = "${BROWSERSTACK_LOCAL_IDENTIFIER}"
+                                    env.BUILD_NUMBER = "${BUILD_NUMBER}"
+                                    env.MAGELLAN_JOB_NAME = 'bcs'
+
+                                    sh '''
+                                         sh 'npx playwright test --project=chromium --retries=1
+                                    '''
+                                    } catch (error) {
+                                    error.printStackTrace()
+                                    println('Got an error')
+                                    }
+                                }
+                        }
+                    }
+                }
+                catch (error) {
+                    if (currentBuild.result == null) {
+                        currentBuild.result = 'FAILURE'   // sets the ordinal as 4 and boolean to false
+                    }
+                    emailext body: '${JELLY_SCRIPT,template="selenium-results"}', mimeType: 'text/html', recipientProviders: [[$class: 'CulpritsRecipientProvider'], [$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: '[JENKINS] ${JOB_BASE_NAME} failed', to: 'mimran@nisum.com'
+                    throw error
+                }
+                finally {
+                    if (currentBuild.result == 'FAILURE' || currentBuild.result == 'UNSTABLE') {
+                        emailext attachLog: true, body: 'Failure in ${JOB_BASE_NAME} build number ${BUILD_URL}', compressLog: true, recipientProviders: [[$class: 'CulpritsRecipientProvider'], [$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: '[JENKINS] ${JOB_BASE_NAME} failed', to: 'mimran@nisum.com'
+                    }
+
+                    if (SEND_TO_INFLUX.toBoolean()) {
+                        step([$class: 'InfluxDbPublisher', customData: null, customDataMap: null, customPrefix: null, target: 'InfluxDB'])
+                    }
                 }
             }
-        }
-
-        stage('firefox') {
-                steps {
-                    sh 'npx playwright test --project=headless_firefox'
-                }
-        }
-        stage('webkit') {
-                steps {
-                    sh 'npx playwright test --project=headless_webkit'
-                }
         }
     }
 }
