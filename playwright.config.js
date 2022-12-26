@@ -28,10 +28,10 @@ const config = {
     launchOptions: {
       slowMo: 20,
       args: ["--start-maximized"],
-      logger:{
-      isEnabled: (name) => name === 'api',
-      log: (name, severity, message) => console.log(`${name} ${message}`)
-      }
+      // logger:{
+      // isEnabled: (name) => name === 'api',
+      // log: (name, severity, message) => console.log(`${name} ${message}`)
+      // }
     },
   },
 
