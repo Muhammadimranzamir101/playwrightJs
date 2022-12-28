@@ -12,7 +12,7 @@ const config = {
     timeout: 5000 //timeout for assertion
   },
 
-  reporter: 'html',
+  reporter: [['line'], ['allure-playwright']],
 
   workers: 20,
 

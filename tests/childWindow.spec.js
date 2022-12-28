@@ -1,6 +1,6 @@
 const {test, expect} = require('@playwright/test');
 
-test.only('Handling tabs in playwright',async({browser})=>{
+test('Handling tabs in playwright',async({browser})=>{
     const context = await browser.newContext();
     const page = await context.newPage();
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/")

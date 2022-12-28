@@ -3,8 +3,8 @@ const { use } = require('../playwright.config');
 
 const caps = {
     'browser': 'chrome',  // allowed browsers are `chrome`, `edge`, `playwright-chromium`, `playwright-firefox` and `playwright-webkit`
-    'os': 'osx',
-    'os_version': 'ventura',
+    'os': 'Windows',
+    'os_version': '11',
     'name': 'Playwright sample Local test',
     'build': 'playwright-build-3',
     'browserstack.local': 'true',
@@ -14,6 +14,8 @@ const caps = {
 };
 
 test('Go to google.com and verify title on browserstack', async () => {
+
+    //connecting to browserstack using websocket...
     const browser = await chromium.connect({
         wsEndpoint: `wss://cdp.browserstack.com/playwright?caps=${encodeURIComponent(JSON.stringify(caps))}`,
     });
@@ -35,5 +37,6 @@ test('Go to google.com and verify title on browserstack', async () => {
                 action: 'setSessionStatus', arguments: { status: 'failed', reason: 'Page title did not match' }
             })}`);
     }
-    await browser.close();
+
+    await browser.close()
 })
