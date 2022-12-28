@@ -1,7 +1,7 @@
 const { test, expect } = require('@playwright/test');
 const { use } = require('../playwright.config');
 
-test('Normal Assertion in playwright', async ({ page }) => {
+test.only('Normal Assertion in playwright', async ({ page }) => {
 
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/')
     await page.locator('#username').type('muhammadimranzamir786@gmail.com')

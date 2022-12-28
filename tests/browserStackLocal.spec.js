@@ -3,8 +3,8 @@ const { use } = require('../playwright.config');
 
 const caps = {
     'browser': 'chrome',  // allowed browsers are `chrome`, `edge`, `playwright-chromium`, `playwright-firefox` and `playwright-webkit`
-    'os': 'Windows',
-    'os_version': '11',
+    'os': 'OSX',
+    'os_version': 'ventura',
     'name': 'Playwright sample Local test',
     'build': 'playwright-build-3',
     'browserstack.local': 'true',
@@ -13,7 +13,7 @@ const caps = {
     'client.playwrightVersion': '1.28.1'  // Playwright version being used on your local project needs to be passed in this capability for BrowserStack to be able to map request and responses correctly
 };
 
-test('Go to google.com and verify title on browserstack', async () => {
+test.skip('Go to google.com and verify title on browserstack', async () => {
 
     //connecting to browserstack using websocket...
     const browser = await chromium.connect({
