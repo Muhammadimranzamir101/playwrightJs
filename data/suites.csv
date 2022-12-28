@@ -1,2 +1,2 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Wed Dec 28 08:29:15 UTC 2022","Wed Dec 28 08:29:29 UTC 2022","14466","headless","tests/childWindow.spec.js","","","","Handling tabs in playwright",""
+"passed","Wed Dec 28 13:02:20 UTC 2022","Wed Dec 28 13:02:24 UTC 2022","3990","headless","tests/assertions.spec.js","","","","Normal Assertion in playwright",""
