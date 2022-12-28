@@ -15,7 +15,7 @@ test('Hidden/Unhidden assertion', async ({ page }) => {
     })
 
     await test.step('Assert the visibility after click', async() => {
-        await expect(page.locator('#displayed-text'), 'Assert the text box is Hidden').toBeHidden()
+        await expect(page.locator('#displayed-text'), 'Assert the text box is Hidden').toBeVisible()
     })
 
 })

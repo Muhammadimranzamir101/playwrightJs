@@ -5,8 +5,8 @@ const config = {
   /* Maximum time one test can run for. */
   timeout: 90 * 1000,
 
-  //testIgnore: '**/testDir/**',
-  //testMatch: /.*\.specs\.js/,
+  // testIgnore: '**/testDir/**',
+  // testMatch: /.*\.specs\.js/,
 
   expect: {
     timeout: 5000 //timeout for assertion

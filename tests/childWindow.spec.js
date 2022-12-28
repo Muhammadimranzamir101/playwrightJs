@@ -1,6 +1,6 @@
 const {test, expect} = require('@playwright/test');
 
-test('Handling tabs in playwright',async({browser})=>{
+test.only('Handling tabs in playwright',async({browser})=>{
     const context = await browser.newContext();
     const page = await context.newPage();
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/")
@@ -16,6 +16,7 @@ test('Handling tabs in playwright',async({browser})=>{
     ])
 
     const text = await newPage.locator('p.red').textContent()
+    await page.pause()
     const email = text.match(/([a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]+)/gi);
     console.log(email)
     await page.bringToFront();

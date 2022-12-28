@@ -16,7 +16,6 @@ test.beforeAll(async () => {
     //200, 201
     expect(loginResponse.ok()).toBeTruthy()
     expect(loginResponse.status()).toBe(200)
-    //expect(loginResponse.body)
     console.log(loginResponse.body)
     const loginResponseJson = await loginResponse.json();
     token = loginResponseJson.token;

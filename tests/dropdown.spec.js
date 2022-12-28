@@ -1,7 +1,7 @@
 const {test, expect} = require('@playwright/test');
 const { use } = require('../playwright.config');
 
-test.only('select from dropdown', async ({page})=>{
+test('select from dropdown', async ({page})=>{
     await page.goto('https://rahulshettyacademy.com/loginpagePractise/');
     const username = page.locator('#username');
     const signIn = page.locator('#signInBtn');
