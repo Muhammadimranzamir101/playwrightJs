@@ -1,2 +1,2 @@
 "Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Thu Dec 29 09:05:31 UTC 2022","Thu Dec 29 09:05:35 UTC 2022","4556","headless","tests/assertions.spec.js","","","","Normal Assertion in playwright",""
+"passed","Thu Dec 29 09:07:34 UTC 2022","Thu Dec 29 09:07:38 UTC 2022","4072","headless","tests/assertions.spec.js","","","","Normal Assertion in playwright",""
