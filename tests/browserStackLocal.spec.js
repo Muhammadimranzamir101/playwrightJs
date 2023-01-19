@@ -8,8 +8,8 @@ const caps = {
     'name': 'Playwright sample Local test',
     'build': 'playwright-build-3',
     'browserstack.local': 'true',
-    'browserstack.username': process.env.BROWSERSTACK_USERNAME || 'muhammadimran_MHX6Zj',
-    'browserstack.accessKey': process.env.BROWSERSTACK_ACCESS_KEY || 'EB5FT2YthqRzGFbDyqXa',
+    'browserstack.username': process.env.BROWSERSTACK_USERNAME,
+    'browserstack.accessKey': process.env.BROWSERSTACK_ACCESS_KEY,
     'client.playwrightVersion': '1.28.1'  // Playwright version being used on your local project needs to be passed in this capability for BrowserStack to be able to map request and responses correctly
 };
 
